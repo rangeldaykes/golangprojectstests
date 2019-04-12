@@ -27,7 +27,7 @@ func main() {
 }
 
 func testRedis() {
-	resp, err := infraredigo.PersistenceRedigo{}.Ping()
+	resp, err := infraredigo.NewPersistenceRedigo().Ping()
 	if err != nil {
 		log.Println(err)
 		return

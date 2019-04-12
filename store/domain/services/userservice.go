@@ -7,13 +7,18 @@ import (
 	"strconv"
 )
 
-// UserService implements a services for user
-type UserService struct {
+type userService struct {
 	interfaces.IRepositoryCacheUser
 	interfaces.IRepositoryDispMobile
 }
 
-func (rs UserService) GetUser(iduser int) (viewmodels.UserVM, error) {
+func NewUserService(
+	cache interfaces.IRepositoryCacheUser,
+	repo interfaces.IRepositoryDispMobile) *userService {
+	return &userService{cache, repo}
+}
+
+func (rs userService) GetUser(iduser int) (viewmodels.UserVM, error) {
 	ret, err := rs.IRepositoryCacheUser.GetUser(strconv.Itoa(iduser))
 	if err != nil || ret == "" {
 		return viewmodels.UserVM{}, err

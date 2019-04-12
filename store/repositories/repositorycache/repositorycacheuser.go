@@ -2,10 +2,14 @@ package repositorycache
 
 import "store/infrastucture/data/infraredis"
 
-type RepositoryCacheUser struct {
+type repositoryCacheUser struct {
 	infraredis.IInfraPersistenceRedis
 }
 
-func (rb RepositoryCacheUser) GetUser(ID string) (string, error) {
+func NewRepositoryCacheUser(infra infraredis.IInfraPersistenceRedis) *repositoryCacheUser {
+	return &repositoryCacheUser{infra}
+}
+
+func (rb repositoryCacheUser) GetUser(ID string) (string, error) {
 	return rb.IInfraPersistenceRedis.GetKey(ID)
 }

@@ -13,9 +13,12 @@ type UserController struct {
 	interfaces.IUserService
 }
 
-func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) {
+func NewUserController(userserv interfaces.IUserService) *UserController {
+	return &UserController{userserv}
+}
 
-	userid, err := strconv.Atoi(chi.URLParam(r, "userid"))
+func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) {
+	userid, err := strconv.Atoi(chi.URLParam(r, "id"))
 	if err != nil {
 		ErrorHandling(w, err)
 		return

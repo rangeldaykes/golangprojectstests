@@ -9,11 +9,15 @@ import (
 var pool = newPool()
 
 // PersistenceRedigo struct to provides methods redis
-type PersistenceRedigo struct {
+type persistenceRedigo struct {
+}
+
+func NewPersistenceRedigo() *persistenceRedigo {
+	return &persistenceRedigo{}
 }
 
 // Ping test connection server
-func (pr PersistenceRedigo) Ping() (string, error) {
+func (pr persistenceRedigo) Ping() (string, error) {
 	conn := pool.Get()
 	defer conn.Close()
 
@@ -28,7 +32,7 @@ func (pr PersistenceRedigo) Ping() (string, error) {
 }
 
 // GetKey GET value
-func (pr PersistenceRedigo) GetKey(key string) (string, error) {
+func (pr persistenceRedigo) GetKey(key string) (string, error) {
 	conn := pool.Get()
 	defer conn.Close()
 

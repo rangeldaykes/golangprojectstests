@@ -49,35 +49,16 @@ func (router *router) InitRouter() *chi.Mux {
 	return r
 }
 
-//type HandlerFuncErr func(ResponseWriter, *Request) error
-type HandlerFuncErr http.HandlerFunc
-
-// Routes makes routes do user
 func (router *router) RoutesUser() chi.Router {
 	r := chi.NewRouter()
 
-	// r.Use(func(next http.Handler) http.Handler {
-	// 	fn := func(w http.ResponseWriter, r *http.Request) {
-	// 		fmt.Println("foi")
-
-	// 		next.ServeHTTP(w, r)
-	// 		er := r.Context().Err()
-	// 		fmt.Println(er)
-	// 		fmt.Println("voltou")
-	// 	}
-
-	// 	return http.HandlerFunc(fn)
+	// r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	// 	injectioncontainer.InjectUserController().List(w, r)
 	// })
-
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		injectioncontainer.InjectUserController().List(w, r)
-	})
 
 	r.Route("/{id}", func(r chi.Router) {
 		r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 			injectioncontainer.InjectUserController().Get(w, r)
-			//err := injectioncontainer.InjectUserController().Get(w, r)
-			//fmt.Println(err)
 		})
 	})
 

@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/Documentos/projectsgolang_testes/store/main.go",
+            "program": "/home/rangelsantos/Documentos/golangprojectstests/store/main.go",
             "env": {},
             "args": []
         }

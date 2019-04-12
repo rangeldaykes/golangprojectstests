@@ -9,6 +9,10 @@ type InfraRepositorySqlx struct {
 	IConnDataBase
 }
 
+func NewInfraRepositorySqlx(conn IConnDataBase) *InfraRepositorySqlx {
+	return &InfraRepositorySqlx{conn}
+}
+
 // PrepareNamedSelect get data from database with params named
 // use dest param: as slice of []struct to return a data,
 // sql param: your sql query and
