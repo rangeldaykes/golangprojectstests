@@ -9,8 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/Documentos/golangprojectstests/store/main.go",
-            //"program": "/home/rangelsantos/Documentos/projects/goclosures/goclosures.go",
+            "program": "/home/rangelsantos/Documentos/golangprojectstests/web/webcontextcookies/webcontextcookies.go",
             "env": {},
             "args": []
         }

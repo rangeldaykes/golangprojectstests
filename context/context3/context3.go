@@ -8,6 +8,26 @@ import (
 	"time"
 )
 
+func operation1(ctx context.Context) error {
+	// Let's assume that this operation failed for some reason
+	// We use time.Sleep to simulate a resource intensive operation
+	time.Sleep(100 * time.Millisecond)
+	return errors.New("failed")
+}
+
+func operation2(ctx context.Context) {
+	// We use a similar pattern to the HTTP server
+	// that we saw in the earlier example
+	select {
+	case <-time.After(500 * time.Millisecond):
+		fmt.Println("ctx.Err = ", ctx.Err())
+		fmt.Println("done")
+	case <-ctx.Done():
+		fmt.Println("ctx.Err = ", ctx.Err())
+		fmt.Println("halted operation2")
+	}
+}
+
 func main() {
 	// Create a new context
 	ctx := context.Background()
@@ -27,24 +47,4 @@ func main() {
 
 	// Run operation2 with the same context we use for operation1
 	operation2(ctx)
-}
-
-func operation1(ctx context.Context) error {
-	// Let's assume that this operation failed for some reason
-	// We use time.Sleep to simulate a resource intensive operation
-	time.Sleep(100 * time.Millisecond)
-	return errors.New("failed")
-}
-
-func operation2(ctx context.Context) {
-	// We use a similar pattern to the HTTP server
-	// that we saw in the earlier example
-	select {
-	case <-time.After(500 * time.Millisecond):
-		fmt.Println("ctx.Err = ", ctx.Err())
-		fmt.Println("done")
-	case <-ctx.Done():
-		fmt.Println("ctx.Err = ", ctx.Err())
-		fmt.Println("halted operation2")
-	}
 }
