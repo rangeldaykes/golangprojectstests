@@ -1,6 +1,6 @@
 package entities
 
-type UserVM struct {
-	ID   int
-	Name string
+type User struct {
+	ID   int    `db:"ID"`
+	Name string `db:"NAME"`
 }

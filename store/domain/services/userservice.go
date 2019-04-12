@@ -1,8 +1,8 @@
 package services
 
 import (
-	"encoding/json"
 	"store/domain/interfaces"
+	"store/domain/models/entities"
 	"store/domain/models/viewmodels"
 	"strconv"
 )
@@ -19,16 +19,21 @@ func NewUserService(
 }
 
 func (rs userService) GetUser(iduser int) (viewmodels.UserVM, error) {
-	ret, err := rs.IRepositoryCacheUser.GetUser(strconv.Itoa(iduser))
-	if err != nil || ret == "" {
-		return viewmodels.UserVM{}, err
-	}
-
-	user := viewmodels.UserVM{}
-	err = json.Unmarshal([]byte(ret), &user)
+	var user = entities.User{}
+	var err error
+	user, err = rs.IRepositoryCacheUser.GetUser(strconv.Itoa(iduser))
 	if err != nil {
-		return user, err
+		//return viewmodels.UserVM{}, err
+		// log
 	}
 
-	return user, nil
+	if user.ID == 0 {
+		user, err = rs.IRepositoryDispMobile.GetUser(iduser)
+		if err != nil {
+			return viewmodels.UserVM{}, err
+		}
+	}
+
+	uservm := viewmodels.UserVM{ID: user.ID, Name: user.Name}
+	return uservm, nil
 }

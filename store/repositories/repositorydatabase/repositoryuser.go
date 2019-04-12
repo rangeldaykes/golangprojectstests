@@ -1,6 +1,9 @@
 package repositorydatabase
 
-import "store/infrastucture/data/infradatabasesqlx"
+import (
+	"store/domain/models/entities"
+	"store/infrastucture/data/infradatabasesqlx"
+)
 
 type repositoryUser struct {
 	infradatabasesqlx.IInfraRepositorySqlx
@@ -10,21 +13,24 @@ func NewRepositoryUser(infra infradatabasesqlx.IInfraRepositorySqlx) *repository
 	return &repositoryUser{infra}
 }
 
-func (rd repositoryUser) CarregarGoogleId(codigoVeiculo int) string {
-
+func (ru repositoryUser) GetUser(ID int) (entities.User, error) {
 	sql := `
-	select c.name
-      from clients c
-     where c.id = :id`
+	select u.id, u.name
+      from users u
+     where u.id = :id`
 
 	s := struct {
 		ID int
 	}{
-		codigoVeiculo,
+		ID,
 	}
 
-	var ret string
-	rd.PrepareNamedGetOne(&ret, sql, s)
+	var ret entities.User
+	err := ru.PrepareNamedGetOne(&ret, sql, s)
+	if err != nil {
+		// log err
+		return ret, nil
+	}
 
-	return ret
+	return ret, nil
 }
