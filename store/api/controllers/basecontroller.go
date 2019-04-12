@@ -6,8 +6,10 @@ import (
 
 func ErrorHandling(w http.ResponseWriter, err error) {
 	if err != nil {
-		//log.Printf("error in List - error: %v", err)
-		//w.WriteHeader(http.StatusInternalServerError)
+
+		//log.Println(string(debug.Stack()))
+		//http.Error(w, fmt.Sprintf("%s \n %s", err.Error(), string(debug.Stack())), 500)
+
 		http.Error(w, err.Error(), 500)
 	}
 }

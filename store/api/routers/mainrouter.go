@@ -44,7 +44,7 @@ func (router *router) InitRouter() *chi.Mux {
 		w.Write([]byte("."))
 	})
 
-	r.Mount("/api/User/v1", router.RoutesUser())
+	r.Mount("/api/v1/User", router.RoutesUser())
 
 	return r
 }

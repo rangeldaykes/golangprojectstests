@@ -39,19 +39,12 @@ func TestFirebird() {
 		log.Fatalln(err)
 	}
 
-	//fcvsSql(db.DB)
-	//fcvsSqlx(db)
 	s := struct {
 		Codigo int
 	}{
 		1028894,
 	}
 
-	//people := []linhatabela{}
-	//fcvsSqlxNamedSelect(&people, db, s)
-	//fmt.Println(people)
-
-	//people2 := linhatabela{}
 	var people2 string
 	fcvsSqlxNamedGetOne(&people2, db, s)
 	fmt.Println(people2)
