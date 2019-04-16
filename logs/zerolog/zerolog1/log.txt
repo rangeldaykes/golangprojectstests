@@ -1,0 +1,8 @@
+{"level":"info","foo":"bar","time":"2019-04-16T16:06:26-03:00","message":"hello world"}
+{"level":"info","foo":"bar","time":"2019-04-16T16:09:43-03:00","message":"hello world"}
+{"level":"info","foo":"bar","time":"2019-04-16T16:14:58-03:00","message":"hello world"}
+[90m2019-04-16T16:24:20-03:00[0m [32mINF[0m hello world
+[90m2019-04-16T16:24:33-03:00[0m [32mINF[0m hello world
+{"level":"info","time":"2019-04-16T16:46:28-03:00","message":"hello world"}
+{"level":"info","time":"2019-04-16T16:46:31-03:00","message":"hello world"}
+[90m16 Apr 19 16:47 -03[0m [INFO ] hello world

@@ -1,0 +1,2 @@
+Log: 2019/04/16 12:21:32 main started
+Log: 2019/04/16 12:21:32 fatal message
