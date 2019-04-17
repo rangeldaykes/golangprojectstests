@@ -3,6 +3,7 @@ package middlewares
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 )
 
@@ -26,7 +27,7 @@ func ProcessingTime(next http.Handler) http.Handler {
 		diffmili := int64(diff / time.Millisecond)
 		fmt.Println(diffmili)
 
-		//w.Header().Set("X-Processing-Time", string(strconv.FormatInt(diffmili, 10)))
+		w.Header().Set("X-Processing-Time", string(strconv.FormatInt(diffmili, 10)))
 
 		//for a, b := range w.Header() {
 		//fmt.Println(a, b)
@@ -40,7 +41,7 @@ func ProcessingTime(next http.Handler) http.Handler {
 
 		//(*headerori).Header().Set("mmm", "nnn")
 
-		w.Write([]byte("tgtg"))
+		//w.Write([]byte("tgtg"))
 
 	}
 

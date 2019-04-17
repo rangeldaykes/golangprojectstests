@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/Documentos/golangprojectstests/web/webcontextcookies/webcontextcookies.go",
+            "program": "/home/rangelsantos/Documentos/golangprojectstests/logs/logsfile1/logsfile1.go",
             "env": {},
             "args": []
         }

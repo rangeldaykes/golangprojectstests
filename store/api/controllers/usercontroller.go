@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"encoding/json"
 	"net/http"
 	"store/domain/interfaces"
 	"strconv"
@@ -34,7 +33,7 @@ func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(404), 404)
 	}
 
-	err = json.NewEncoder(w).Encode(user)
+	//err = json.NewEncoder(w).Encode(user)
 	if err != nil {
 		ErrorHandling(w, err)
 		return
