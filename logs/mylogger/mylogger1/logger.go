@@ -3,6 +3,7 @@ package mylogger1
 type Logger struct {
 	instance ITypeLogger
 	loglevel LogLevel
+	context  LogContext
 	//config   string
 	//getlevel LogLevel
 }
