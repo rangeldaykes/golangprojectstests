@@ -5,15 +5,22 @@ import (
 	"fmt"
 )
 
+var queue *list.List
+
 func main() {
-	queue := list.New()
+	queue = list.New()
 	queue.PushBack("Hello ") // Enqueue
 	queue.PushBack("world!")
+	queue.PushBack("world!")
 
-	for queue.Len() > 0 {
-		e := queue.Front() // First element
-		fmt.Print(e.Value)
+	printList()
+	e := queue.Back()
+	queue.Remove(e)
+	printList()
+}
 
-		queue.Remove(e) // Dequeue
+func printList() {
+	for e := queue.Front(); e != nil; e = e.Next() {
+		fmt.Println(e.Value)
 	}
 }
