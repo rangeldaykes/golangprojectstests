@@ -60,7 +60,7 @@ func (f *FileLogger) start() {
 
 	file := filepath.Join(f.path, filename)
 
-	logFile, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	logFile, err := os.OpenFile(file, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		panic(err)
 	}
@@ -68,7 +68,8 @@ func (f *FileLogger) start() {
 	f.logFile = logFile
 
 	//f.logger = log.New(logFile, "", log.LstdFlags)
-	f.logger = log.New(logFile, "", log.Ldate|log.Ltime|log.Lmicroseconds)
+	//f.logger = log.New(logFile, "", log.Ldate|log.Ltime|log.Lmicroseconds)
+	f.logger = log.New(logFile, "", log.Lshortfile)
 
 }
 
@@ -81,7 +82,7 @@ func (f *FileLogger) Log(level LogLevel, message string) {
 		f.Close()
 		f.start()
 	}
-
+	f.logger.SetFlags
 	if f.logger != nil {
 		f.logger.Println(message)
 	}

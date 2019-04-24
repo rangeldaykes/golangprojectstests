@@ -1,22 +1,41 @@
-package mylogger1_test
+package main
 
 import (
-	"mylogger1"
-	"testing"
+	"fmt"
+	"mylogger/mylogger1"
+	"time"
 )
 
-func TestLogger(t *testing.T) {
+var log *mylogger1.Logger
 
-	//log := mylogger1.NewLogger(mylogger1.NewConsoleLoger(), mylogger1.LEVEL_LOG)
+func main() {
 
-	log := mylogger1.NewLogger(
+	log = mylogger1.NewLogger(
 		mylogger1.NewFileLogger(
 			"Logteste",
 			"/home/rangelsantos/discod/golangprojectstests/"),
 		mylogger1.LEVEL_LOG)
 
-	for i := 0; i < 10000; i++ {
-		log.Log("a")
+	t1 := time.Now()
+
+	//time.Sleep(3 * time.Second)
+	testLog()
+	//time.Sleep(3 * time.Second)
+	testLog()
+	//time.Sleep(3 * time.Second)
+	testLog()
+
+	t2 := time.Now()
+	diff := t2.Sub(t1)
+	diffmili := int64(diff / time.Millisecond)
+	fmt.Println(diffmili)
+
+	fmt.Scanln()
+}
+
+func testLog() {
+	for i := 0; i < 50000; i++ {
+
 		log.Log("TestLogger1")
 
 		//str := "ab"
