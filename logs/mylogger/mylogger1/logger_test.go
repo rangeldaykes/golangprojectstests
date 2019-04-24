@@ -25,6 +25,8 @@ func TestLogger(t *testing.T) {
 	}
 	fmt.Println(i)
 
+	log.Assert(i == 1, "i não tem o valor 1")
+
 	log.ContextStart("start1")
 	log.Log("after start context 1")
 

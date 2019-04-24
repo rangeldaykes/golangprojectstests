@@ -25,7 +25,10 @@ func (l *Logger) Debug(message string) {
 }
 
 func (l *Logger) Assert(condition bool, message string) {
-	l.logBase(LEVEL_ASSERT, message)
+	if !condition {
+		msg := fmt.Sprintf("%s %s", "Assert: ", message)
+		l.logBase(LEVEL_ASSERT, msg)
+	}
 }
 
 func (l *Logger) Error(err error, message string) {
