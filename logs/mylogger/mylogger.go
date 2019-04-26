@@ -36,4 +36,5 @@ func main() {
 	log.ContextEnd()
 
 	log.Log("after end context 1")
+
 }

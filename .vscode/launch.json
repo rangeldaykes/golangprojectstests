@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/discod/golangprojectstests/logs/mylogger/mylogger.go",
+            "program": "/home/rangelsantos/discod/golangprojectstests/config/reloadconfigjson/reloadconfigjson.go",
             "env": {},
             "args": []
         }
