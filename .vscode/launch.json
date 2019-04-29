@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/discod/golangprojectstests/config/reloadconfigjson/reloadconfigjson.go",
+            "program": "/home/rangelsantos/discod/golangprojectstests/ioreader/ioreader3/ioreader3.go",
             "env": {},
             "args": []
         }
