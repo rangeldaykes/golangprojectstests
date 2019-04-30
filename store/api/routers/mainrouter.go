@@ -1,10 +1,12 @@
 package routers
 
 import (
+	"fmt"
 	"net/http"
-	"store/api/middlewares"
 	"store/infrastucture/injectioncontainer"
+	"strconv"
 	"sync"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
@@ -68,7 +70,6 @@ func (router *router) RoutesUser() chi.Router {
 
 	return r
 }
-
 
 // ProcessingTime is a mid
 func ProcessingTime(next http.Handler) http.Handler {

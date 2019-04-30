@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/discod/golangprojectstests/ioreader/ioreader3/ioreader3.go",
+            "program": "/home/rangelsantos/discoe/golangprojectstests/io/iowriter/iowriter5/iowriter5.go",
             "env": {},
             "args": []
         }
