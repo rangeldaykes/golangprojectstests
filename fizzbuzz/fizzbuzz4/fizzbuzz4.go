@@ -11,7 +11,7 @@ func main() {
 		"Buzz": 5,
 	}
 
-	fizzbuzz(1, 100, keys)
+	fizzbuzz(1, 15, keys)
 }
 
 func fizzbuzz(ini int, end int, triggers map[string]int) {
