@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/discoe/golangprojectstests/xerrors/errors_type_error_intermediary/errors_type_error_intermediary.go",
+            "program": "/home/rangelsantos/discoe/golangprojectstests/fizzbuzz/fizzbuzz5/fizzbuzz5.go",
             "env": {},
             "args": []
         }
