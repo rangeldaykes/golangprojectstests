@@ -1,3 +1,4 @@
+// Pure funciton, dont print result inside the function
 package main
 
 import (

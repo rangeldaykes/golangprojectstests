@@ -1,3 +1,4 @@
+// Parameter predicate too
 package main
 
 import (

@@ -1,3 +1,4 @@
+// Dry dont repeat i%3 and i%5
 package main
 
 import (

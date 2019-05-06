@@ -1,3 +1,4 @@
+// Constants Fizz - Buzz, and funciton divisibleby
 package main
 
 import (
