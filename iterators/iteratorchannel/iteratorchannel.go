@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"math"
+	"time"
 )
 
 type IntWithError struct {
@@ -41,11 +43,18 @@ func printEvenNumbers(max int) {
 }
 
 func main() {
-	fmt.Printf("Even numbers up to 8:\n")
-	printEvenNumbers(8)
+	//fmt.Printf("Even numbers up to 8:\n")
+	//printEvenNumbers(8)
+
+	t1 := time.Now()
 
 	fmt.Printf("Even numbers up to 20, cancel at 8:\n")
-	printEvenNumbersCancellable(20, 8)
+	printEvenNumbersCancellable(9990, math.MaxInt32)
+
+	t2 := time.Now()
+	diff := t2.Sub(t1)
+	diffmili := int64(diff / time.Millisecond)
+	fmt.Println(diffmili)
 }
 
 func generateEvenNumbersWithCtx(ctx context.Context, max int) chan IntWithError {
@@ -91,6 +100,6 @@ func printEvenNumbersCancellable(max int, stopAt int) {
 			continue
 		}
 		// process the value
-		fmt.Printf("%d\n", val.Int)
+		//fmt.Printf("%d\n", val.Int)
 	}
 }

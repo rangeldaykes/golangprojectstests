@@ -8,12 +8,19 @@ import (
 
 func main() {
 	fmt.Printf("Even numbers up to 8:\n")
-	printEvenNumbers(8)
+	t1 := time.Now()
+
+	printEvenNumbers(9999)
+
+	t2 := time.Now()
+	diff := t2.Sub(t1)
+	diffmili := int64(diff / time.Millisecond)
+	fmt.Println(diffmili)
 }
 
 func printEvenNumbers(max int) {
 	err := iterateEvenNumbers(max, func(n int) error {
-		fmt.Printf("%d\n", n)
+		//fmt.Printf("%d\n", n)
 		return nil
 	})
 	if err != nil {
@@ -27,7 +34,6 @@ func iterateEvenNumbers(max int, cb func(n int) error) error {
 	}
 	for i := 2; i < max; i += 2 {
 		err := cb(i)
-		time.Sleep(1 * time.Second)
 		if err != nil {
 			return err
 		}
