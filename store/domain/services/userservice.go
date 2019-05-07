@@ -7,6 +7,11 @@ import (
 	"strconv"
 )
 
+// IUserService for user methods
+type IUserService interface {
+	GetUser(iduser int) (viewmodels.UserVM, error)
+}
+
 type userService struct {
 	interfaces.IRepositoryCacheUser
 	interfaces.IRepositoryDispMobile
