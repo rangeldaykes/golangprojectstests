@@ -59,7 +59,7 @@ func (pr persistenceRedigo) GetKey(key string) (string, error) {
 
 	s, err := redis.String(conn.Do("GET", key))
 	if err != nil && err != redis.ErrNil {
-		return "", (err)
+		return "", err
 	}
 
 	return s, nil

@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/discoe/golangprojectstests/fizzbuzz/fizzbuzz4/fizzbuzz4.go",
+            "program": "/home/rangelsantos/discoe/golangprojectstests/time/marshal_unmarshal/marshal_unmarshal.go",
             "env": {},
             "args": []
         }
