@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/home/rangelsantos/discoe/golangprojectstests/time/marshal_unmarshal/marshal_unmarshal.go",
+            "program": "/home/rangelsantos/discoe/golangprojectstests/time/marshal_unmarshal_struct/marshal_unmarshal_struct.go",
             "env": {},
             "args": []
         }
