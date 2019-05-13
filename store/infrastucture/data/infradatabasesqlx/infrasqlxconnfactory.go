@@ -51,26 +51,26 @@ func (c connDataBase) GetConn() *sqlx.DB {
 
 func createConnFirebird() *sqlx.DB {
 	c, err := sqlx.Connect("firebirdsql", connectionStringFirebird)
-	c.SetMaxIdleConns(5)
-	c.SetMaxOpenConns(100)
-	c.SetConnMaxLifetime(time.Minute * 5)
-
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	c.SetMaxIdleConns(5)
+	c.SetMaxOpenConns(100)
+	c.SetConnMaxLifetime(time.Minute * 5)
 
 	return c
 }
 
 func createConnPostgres() *sqlx.DB {
 	c, err := sqlx.Connect("postgres", connectionStringPostgres)
-	c.SetMaxIdleConns(5)
-	c.SetMaxOpenConns(100)
-	c.SetConnMaxLifetime(time.Minute * 5)
-
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	c.SetMaxIdleConns(5)
+	c.SetMaxOpenConns(100)
+	c.SetConnMaxLifetime(time.Minute * 5)
 
 	return c
 }
