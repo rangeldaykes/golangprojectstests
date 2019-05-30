@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-	"store/api/routers"
-	"store/infrastucture/data/infraredis/infraredigo"
+	"store/infra/cacheredis/redisredigo"
+	"store/routers"
 )
 
 func main() {
@@ -27,7 +27,7 @@ func main() {
 }
 
 func testRedis() {
-	resp, err := infraredigo.NewPersistenceRedigo().Ping()
+	resp, err := redisredigo.NewPersistenceRedigo().Ping()
 	if err != nil {
 		log.Println(err)
 		return
