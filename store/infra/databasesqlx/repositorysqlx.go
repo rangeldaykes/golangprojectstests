@@ -49,11 +49,3 @@ func (rs *InfraRepositorySqlx) PrepareNamedGetOne(dest interface{}, sql string, 
 
 	return nil
 }
-
-// Select return one instace from query
-// func (rs *InfraRepositorySqlx) Select(dest interface{}, query string, args ...interface{}) error {
-// 	c := rs.conn()
-// 	defer c.Close()
-
-// 	return c.Select(&dest, query, args)
-// }

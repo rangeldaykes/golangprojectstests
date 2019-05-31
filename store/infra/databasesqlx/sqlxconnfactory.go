@@ -14,7 +14,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var connectionStringFirebird = `SYSDBA:masterkey@127.0.0.1/home/rangelsantos/discod/desenvolvimento/dbsfirebird/store.fdb`
+var connectionStringFirebird = `SYSDBA:masterkey@127.0.0.1/home/devkubuntu/discod/desenvolvimento/dbsfirebird/store.fdb`
 
 var connectionStringPostgres = "postgres://postgres:postgres@127.0.0.1/store?sslmode=disable"
 

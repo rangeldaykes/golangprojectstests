@@ -4,7 +4,7 @@ import (
 	"store/domain/entities"
 	"store/domain/viewmodels"
 	"store/repositorycache"
-	"store/repositorydatabase/repositoryuser"
+	"store/repositorydatabase"
 	"strconv"
 )
 
@@ -15,12 +15,12 @@ type IUserService interface {
 
 type userService struct {
 	repositorycache.IRepositoryCacheUser
-	repositoryuser.IRepositoryUser
+	repositorydatabase.IRepositoryUser
 }
 
 func NewUserService(
 	cache repositorycache.IRepositoryCacheUser,
-	repo repositoryuser.IRepositoryUser) *userService {
+	repo repositorydatabase.IRepositoryUser) *userService {
 	return &userService{cache, repo}
 }
 
@@ -29,7 +29,7 @@ func (rs userService) GetUser(iduser int) (viewmodels.UserVM, error) {
 	var err error
 	user, err = rs.IRepositoryCacheUser.GetUser(strconv.Itoa(iduser))
 	if err != nil {
-		//return viewmodels.UserVM{}, err
+		return viewmodels.UserVM{}, err
 		// log
 	}
 

@@ -5,12 +5,12 @@ import (
 	"store/domain/services/userservice"
 	"store/infra/cacheredis/redisredigo"
 	"store/repositorycache"
-	"store/repositorydatabase/repositoryuser"
+	"store/repositorydatabase"
 )
 
 func InjectUserController() *controllers.UserController {
 	databasesqlx := injectdatabase()
-	repodatabasedbdisp := repositoryuser.NewRepositoryUser(databasesqlx)
+	repodatabasedbdisp := repositorydatabase.NewRepositoryUser(databasesqlx)
 	repocache := redisredigo.NewPersistenceRedigo()
 	repocacheuser := repositorycache.NewRepositoryCacheUser(repocache)
 	serviceuser := userservice.NewUserService(repocacheuser, repodatabasedbdisp)

@@ -55,15 +55,13 @@ func (router *router) RoutesUser() chi.Router {
 	r := chi.NewRouter()
 
 	r.Use()
-
-	// r.Route("/{id}", func(r chi.Router) {
-	// 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-	// 		di.InjectUserController().Get(w, r)
-	// 	})
-	// })
+	r.Use(MiddlewareBasic)
 
 	r.Route("/{id}", func(r chi.Router) {
-		r.Method(http.MethodGet, "/", rootHandler(di.InjectUserController().Get))
+		r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+			//rootHandler(di.InjectUserController().Get).ServeHTTP(w, r)
+			di.InjectUserController().Get(w, r)
+		})
 	})
 
 	return r
@@ -77,4 +75,11 @@ func (fn rootHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 	}
+}
+
+func MiddlewareBasic(h http.Handler) http.Handler {
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		h.ServeHTTP(w, r)
+	}
+	return http.HandlerFunc(fn)
 }

@@ -21,6 +21,21 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8085", contexttedMux))
 }
 
+func AddContext(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Method, "-", r.RequestURI)
+		cookie, _ := r.Cookie("username")
+		if cookie != nil {
+			// add data to context
+			ctx := context.WithValue(r.Context(), "Username", cookie.Value)
+			next.ServeHTTP(w, r.WithContext(ctx))
+		} else {
+			next.ServeHTTP(w, r)
+		}
+
+	})
+}
+
 func StatusPage(w http.ResponseWriter, r *http.Request) {
 	//w.Write([]byte("This Page will show the context username once the context is added."))
 
@@ -44,19 +59,4 @@ func LogoutPage(w http.ResponseWriter, r *http.Request) {
 	expiration := time.Now().AddDate(0, 0, -1) // set to expire in the past
 	cookie := http.Cookie{Name: "username", Value: "name@name.com", Expires: expiration}
 	http.SetCookie(w, &cookie)
-}
-
-func AddContext(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.Method, "-", r.RequestURI)
-		cookie, _ := r.Cookie("username")
-		if cookie != nil {
-			// add data to context
-			ctx := context.WithValue(r.Context(), "Username", cookie.Value)
-			next.ServeHTTP(w, r.WithContext(ctx))
-		} else {
-			next.ServeHTTP(w, r)
-		}
-
-	})
 }

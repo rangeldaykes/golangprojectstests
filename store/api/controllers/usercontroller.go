@@ -16,15 +16,17 @@ func NewUserController(userserv userservice.IUserService) *UserController {
 	return &UserController{userserv}
 }
 
-func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) error {
+func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) {
 	userid, err := strconv.Atoi(chi.URLParam(r, "id"))
 	if err != nil {
-		return err
+		ErrorHandling(w, err)
+		return
 	}
 
 	user, err := rs.GetUser(userid)
 	if err != nil {
-		return err
+		ErrorHandling(w, err)
+		return
 	}
 
 	if user.ID == 0 {
@@ -33,23 +35,20 @@ func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) error {
 
 	//err = json.NewEncoder(w).Encode(user)
 	if err != nil {
-		return err
+		ErrorHandling(w, err)
+		return
 	}
-
-	return nil
 }
 
 // func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) error {
 // 	userid, err := strconv.Atoi(chi.URLParam(r, "id"))
 // 	if err != nil {
-// 		ErrorHandling(w, err)
-// 		return
+// 		return err
 // 	}
 
 // 	user, err := rs.GetUser(userid)
 // 	if err != nil {
-// 		ErrorHandling(w, err)
-// 		return
+// 		return err
 // 	}
 
 // 	if user.ID == 0 {
@@ -58,7 +57,8 @@ func (rs *UserController) Get(w http.ResponseWriter, r *http.Request) error {
 
 // 	//err = json.NewEncoder(w).Encode(user)
 // 	if err != nil {
-// 		ErrorHandling(w, err)
-// 		return
+// 		return err
 // 	}
+
+// 	return nil
 // }
