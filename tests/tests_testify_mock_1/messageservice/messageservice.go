@@ -15,7 +15,7 @@ type SMSService struct{}
 // charged via SMS
 // This is the method we are going to mock
 func (sms SMSService) SendChargeNotification(value int) error {
-	fmt.Println("Sending Production Charge Notification")
+	fmt.Println("Sending Production Charge Notification", value)
 	return nil
 }
 
